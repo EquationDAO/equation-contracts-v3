@@ -33,6 +33,8 @@ contract FarmRewardDistributorUpgradeable is
         BaseDistributorUpgradeable.__BaseDistributor_init(_EFC, _distributorV2.signer());
 
         (token, feeDistributor, distributorV2) = (_token, _feeDistributor, _distributorV2);
+
+        _token.approve(address(_feeDistributor), type(uint256).max);
     }
 
     /// @inheritdoc IFarmRewardDistributor
