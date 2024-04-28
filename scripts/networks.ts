@@ -48,7 +48,7 @@ const _100xCfg = {
         maxLeveragePerLiquidityPosition: 200n,
         maxLeveragePerPosition: 100n,
         liquidationFeeRatePerPosition: parsePercent("0.4%"),
-        maxPositionLiquidity: 45_000_000n * 10n ** 6n,
+        maxPositionLiquidity: 25_000_000n * 10n ** 6n,
         maxPositionValueRate: parsePercent("3000%"),
         maxSizeRatePerPosition: parsePercent("0.667%"),
     },
@@ -58,39 +58,8 @@ const _100xCfg = {
     priceCfg: {
         ...defaultPriceCfg,
         liquidationVertexIndex: 6,
-        maxPriceImpactLiquidity: 45_000_000n * 10n ** 6n,
-    },
-};
-
-const _50xCfg = {
-    baseCfg: {
-        ...defaultBaseCfg,
-        maxLeveragePerLiquidityPosition: 100n,
-        maxLeveragePerPosition: 50n,
-        liquidationFeeRatePerPosition: parsePercent("0.4%"),
-        maxPositionLiquidity: 5_000_000n * 10n ** 6n,
-        maxPositionValueRate: parsePercent("1000%"),
-        maxSizeRatePerPosition: parsePercent("2%"),
-    },
-    feeRateCfg: {
-        ...defaultFeeRateCfg,
-    },
-    priceCfg: {
-        ...defaultPriceCfg,
-        liquidationVertexIndex: 6,
-        maxPriceImpactLiquidity: 5_000_000n * 10n ** 6n,
-        vertices: [
-            {balanceRate: 0, premiumRate: 0},
-            {balanceRate: parsePercent("0.5%"), premiumRate: parsePercent("0.05%")},
-            {balanceRate: parsePercent("2.5%"), premiumRate: parsePercent("0.1%")},
-            {balanceRate: parsePercent("5%"), premiumRate: parsePercent("0.15%")},
-            {balanceRate: parsePercent("6%"), premiumRate: parsePercent("0.2%")},
-            {balanceRate: parsePercent("7%"), premiumRate: parsePercent("0.3%")},
-            {balanceRate: parsePercent("8%"), premiumRate: parsePercent("0.4%")},
-            {balanceRate: parsePercent("9%"), premiumRate: parsePercent("0.5%")},
-            {balanceRate: parsePercent("10%"), premiumRate: parsePercent("0.6%")},
-            {balanceRate: parsePercent("50%"), premiumRate: parsePercent("10%")},
-        ],
+        maxPriceImpactLiquidity: 25_000_000n * 10n ** 6n,
+        dynamicDepthLevel: parsePercent("20%"),
     },
 };
 
@@ -99,8 +68,8 @@ const _20xCfg = {
         ...defaultBaseCfg,
         maxLeveragePerLiquidityPosition: 100n,
         maxLeveragePerPosition: 20n,
-        liquidationFeeRatePerPosition: parsePercent("0.6%"),
-        maxPositionLiquidity: 1_200_000n * 10n ** 6n,
+        liquidationFeeRatePerPosition: parsePercent("1%"),
+        maxPositionLiquidity: 3_000_000n * 10n ** 6n,
         maxPositionValueRate: parsePercent("1000%"),
         maxSizeRatePerPosition: parsePercent("2%"),
     },
@@ -109,8 +78,9 @@ const _20xCfg = {
     },
     priceCfg: {
         ...defaultPriceCfg,
-        maxPriceImpactLiquidity: 1_200_000n * 10n ** 6n,
-        liquidationVertexIndex: 5,
+        maxPriceImpactLiquidity: 3_000_000n * 10n ** 6n,
+        liquidationVertexIndex: 6,
+        dynamicDepthLevel: parsePercent("40%"),
         vertices: [
             {balanceRate: 0, premiumRate: 0},
             {balanceRate: parsePercent("1%"), premiumRate: parsePercent("0.05%")},
@@ -129,9 +99,9 @@ const _20xCfg = {
 const _10xCfg = {
     baseCfg: {
         ...defaultBaseCfg,
-        maxLeveragePerLiquidityPosition: 50n,
+        maxLeveragePerLiquidityPosition: 100n,
         maxLeveragePerPosition: 10n,
-        liquidationFeeRatePerPosition: parsePercent("1%"),
+        liquidationFeeRatePerPosition: parsePercent("2.5%"),
         maxPositionLiquidity: 700_000n * 10n ** 6n,
         maxPositionValueRate: parsePercent("400%"),
         maxSizeRatePerPosition: parsePercent("5%"),
@@ -141,8 +111,9 @@ const _10xCfg = {
     },
     priceCfg: {
         ...defaultPriceCfg,
-        liquidationVertexIndex: 6,
+        liquidationVertexIndex: 7,
         maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
+        dynamicDepthLevel: parsePercent("60%"),
         vertices: [
             {balanceRate: 0, premiumRate: 0},
             {balanceRate: parsePercent("1%"), premiumRate: parsePercent("0.05%")},
@@ -205,6 +176,7 @@ export const networks = {
                         ..._100xCfg.priceCfg,
                         liquidationVertexIndex: 4,
                         maxPriceImpactLiquidity: 35_000_000n * 10n ** 6n,
+                        dynamicDepthLevel: parsePercent("0%"),
                     },
                 },
             },
@@ -213,25 +185,26 @@ export const networks = {
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
                 marketCfg: {
-                    baseCfg: {
-                        ..._50xCfg.baseCfg,
-                        maxLeveragePerPosition: 20,
-                        liquidationFeeRatePerPosition: parsePercent("0.6%"),
-                        maxPositionLiquidity: 3_000_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _50xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._50xCfg.priceCfg,
-                        liquidationVertexIndex: 5,
-                        maxPriceImpactLiquidity: 3_000_000n * 10n ** 6n,
-                    },
+                    baseCfg: _20xCfg.baseCfg,
+                    feeRateCfg: _20xCfg.feeRateCfg,
+                    priceCfg: _20xCfg.priceCfg,
                 },
             },
             {
                 name: "ARB",
                 chainLinkPriceFeed: "0xD1092a65338d049DB68D7Be6bD89d17a0929945e",
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: _20xCfg,
+                marketCfg: {
+                    baseCfg: {
+                        ..._20xCfg.baseCfg,
+                        maxPositionLiquidity: 1_200_000n * 10n ** 6n,
+                    },
+                    feeRateCfg: _20xCfg.feeRateCfg,
+                    priceCfg: {
+                        ..._20xCfg.priceCfg,
+                        maxPriceImpactLiquidity: 1_200_000n * 10n ** 6n,
+                    },
+                },
             },
             {
                 name: "OP",
@@ -253,13 +226,33 @@ export const networks = {
                 name: "MATIC",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: _20xCfg,
+                marketCfg: {
+                    baseCfg: {
+                        ..._20xCfg.baseCfg,
+                        maxPositionLiquidity: 1_200_000n * 10n ** 6n,
+                    },
+                    feeRateCfg: _20xCfg.feeRateCfg,
+                    priceCfg: {
+                        ..._20xCfg.priceCfg,
+                        maxPriceImpactLiquidity: 1_200_000n * 10n ** 6n,
+                    },
+                },
             },
             {
                 name: "AVAX",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: _20xCfg,
+                marketCfg: {
+                    baseCfg: {
+                        ..._20xCfg.baseCfg,
+                        maxPositionLiquidity: 1_200_000n * 10n ** 6n,
+                    },
+                    feeRateCfg: _20xCfg.feeRateCfg,
+                    priceCfg: {
+                        ..._20xCfg.priceCfg,
+                        maxPriceImpactLiquidity: 1_200_000n * 10n ** 6n,
+                    },
+                },
             },
             {
                 name: "LINK",
@@ -268,12 +261,12 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         ..._20xCfg.baseCfg,
-                        maxPositionLiquidity: 2_000_000n * 10n ** 6n,
+                        maxPositionLiquidity: 1_200_000n * 10n ** 6n,
                     },
                     feeRateCfg: _20xCfg.feeRateCfg,
                     priceCfg: {
                         ..._20xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 2_000_000n * 10n ** 6n,
+                        maxPriceImpactLiquidity: 1_200_000n * 10n ** 6n,
                     },
                 },
             },
@@ -297,7 +290,17 @@ export const networks = {
                 name: "DOGE",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: _20xCfg,
+                marketCfg: {
+                    baseCfg: {
+                        ..._20xCfg.baseCfg,
+                        maxPositionLiquidity: 1_500_000n * 10n ** 6n,
+                    },
+                    feeRateCfg: _20xCfg.feeRateCfg,
+                    priceCfg: {
+                        ..._20xCfg.priceCfg,
+                        maxPriceImpactLiquidity: 1_500_000n * 10n ** 6n,
+                    },
+                },
             },
             {
                 name: "XRP",
@@ -319,7 +322,17 @@ export const networks = {
                 name: "ADA",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: _20xCfg,
+                marketCfg: {
+                    baseCfg: {
+                        ..._20xCfg.baseCfg,
+                        maxPositionLiquidity: 1_500_000n * 10n ** 6n,
+                    },
+                    feeRateCfg: _20xCfg.feeRateCfg,
+                    priceCfg: {
+                        ..._20xCfg.priceCfg,
+                        maxPriceImpactLiquidity: 1_500_000n * 10n ** 6n,
+                    },
+                },
             },
             {
                 name: "BNB",
@@ -357,7 +370,17 @@ export const networks = {
                 name: "ETC",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: _20xCfg,
+                marketCfg: {
+                    baseCfg: {
+                        ..._20xCfg.baseCfg,
+                        maxPositionLiquidity: 1_500_000n * 10n ** 6n,
+                    },
+                    feeRateCfg: _20xCfg.feeRateCfg,
+                    priceCfg: {
+                        ..._20xCfg.priceCfg,
+                        maxPriceImpactLiquidity: 1_500_000n * 10n ** 6n,
+                    },
+                },
             },
             {
                 name: "FIL",
@@ -369,17 +392,7 @@ export const networks = {
                 name: "SUI",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 1_200_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 1_200_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "TIA",
@@ -391,17 +404,7 @@ export const networks = {
                 name: "DOT",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 1_200_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 1_200_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "BLUR",
@@ -425,33 +428,13 @@ export const networks = {
                 name: "TRB",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 900_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 900_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "ATOM",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 1_200_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 1_200_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "APT",
@@ -469,17 +452,7 @@ export const networks = {
                 name: "LDO",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 900_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 900_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "DYDX",
@@ -491,33 +464,13 @@ export const networks = {
                 name: "MKR",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 850_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 850_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "STX",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 900_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 900_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "FTM",
@@ -529,17 +482,7 @@ export const networks = {
                 name: "RUNE",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 900_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 900_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "UNI",
@@ -551,241 +494,91 @@ export const networks = {
                 name: "CRV",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 850_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 850_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "1000BONK",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "ENS",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "AAVE",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "1000PEPE",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "MINA",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "JTO",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "RDNT",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "SUSHI",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "1INCH",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "SNX",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "PENDLE",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "NTRN",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "PYTH",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
             {
                 name: "GMX",
                 chainLinkPriceFeed: undefined,
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
-                marketCfg: {
-                    baseCfg: {
-                        ..._10xCfg.baseCfg,
-                        maxPositionLiquidity: 700_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _10xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._10xCfg.priceCfg,
-                        maxPriceImpactLiquidity: 700_000n * 10n ** 6n,
-                    },
-                },
+                marketCfg: _10xCfg,
             },
         ],
         mixedExecutors: ["0x8D2b663E72A8e29C771e9d0985d313bdd817BB28", "0xe78E0EC237996CF4965623ed6d474acE5Fd36301"],
@@ -848,18 +641,9 @@ export const networks = {
                 chainLinkPriceFeed: "0x24ceA4b8ce57cdA5058b924B9B9987992450590c",
                 maxCumulativeDeltaDiff: defaultMaxCumulativeDeltaDiff,
                 marketCfg: {
-                    baseCfg: {
-                        ..._50xCfg.baseCfg,
-                        maxLeveragePerPosition: 20,
-                        liquidationFeeRatePerPosition: parsePercent("0.6%"),
-                        maxPositionLiquidity: 3_000_000n * 10n ** 6n,
-                    },
-                    feeRateCfg: _50xCfg.feeRateCfg,
-                    priceCfg: {
-                        ..._50xCfg.priceCfg,
-                        liquidationVertexIndex: 5,
-                        maxPriceImpactLiquidity: 3_000_000n * 10n ** 6n,
-                    },
+                    baseCfg: _20xCfg.baseCfg,
+                    feeRateCfg: _20xCfg.feeRateCfg,
+                    priceCfg: _20xCfg.priceCfg,
                 },
             },
             {
