@@ -138,6 +138,17 @@ contract ProtocolFeeDistributorUpgradeable is
     }
 
     /// @inheritdoc BaseDistributorUpgradeable
+    function afterCollectMarketRewardFinished(
+        address /* _account */,
+        uint32 /* _nonce */,
+        uint16 /* _rewardType */,
+        IMarketDescriptor /* _market */,
+        uint200 /* _collectableReward */,
+        address /* _receiver */,
+        bytes memory /* _data */
+    ) internal virtual override {}
+
+    /// @inheritdoc BaseDistributorUpgradeable
     function checkRewardType(uint16 _rewardType) internal virtual override {
         if (bytes(rewardTypeDescriptions[_rewardType]).length == 0)
             revert IFarmRewardDistributorV2.InvalidRewardType(_rewardType);

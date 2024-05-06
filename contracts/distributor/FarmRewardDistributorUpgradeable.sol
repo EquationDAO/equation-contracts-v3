@@ -87,6 +87,34 @@ contract FarmRewardDistributorUpgradeable is
         );
     }
 
+    /// @inheritdoc IFarmRewardDistributor
+    function collectMarketReward(
+        address _account,
+        uint32 _nonce,
+        uint16 _lockupPeriod,
+        uint16 _rewardType,
+        IMarketDescriptor _market,
+        uint200 _amount,
+        bytes calldata _signature,
+        address _receiver
+    ) external override onlyCollector nonReentrant {
+        if (_receiver == address(0)) _receiver = msg.sender;
+
+        uint32 lockupFreeRate = distributorV2.lockupFreeRates(_lockupPeriod);
+        if (lockupFreeRate == 0) revert IFeeDistributor.InvalidLockupPeriod(_lockupPeriod);
+
+        collectMarketReward(
+            _account,
+            _nonce,
+            _rewardType,
+            _market,
+            _amount,
+            _signature,
+            _receiver,
+            abi.encode(_lockupPeriod, lockupFreeRate)
+        );
+    }
+
     /// @inheritdoc BaseDistributorUpgradeable
     function afterCollectRewardFinished(
         address _account,
@@ -141,6 +169,30 @@ contract FarmRewardDistributorUpgradeable is
     ) internal virtual override {
         (uint16 lockupPeriod, uint32 lockupFreeRate) = abi.decode(_data, (uint16, uint32));
         lockupAndBurnToken(_account, lockupPeriod, lockupFreeRate, _totalCollectableReward, _receiver);
+    }
+
+    /// @inheritdoc BaseDistributorUpgradeable
+    function afterCollectMarketRewardFinished(
+        address _account,
+        uint32 _nonce,
+        uint16 _rewardType,
+        IMarketDescriptor _market,
+        uint200 _collectableReward,
+        address _receiver,
+        bytes memory _data
+    ) internal virtual override {
+        (uint16 lockupPeriod, uint32 lockupFreeRate) = abi.decode(_data, (uint16, uint32));
+        lockupAndBurnToken(_account, lockupPeriod, lockupFreeRate, _collectableReward, _receiver);
+
+        emit IFarmRewardDistributorV2.RewardCollected(
+            address(_market),
+            _account,
+            _rewardType,
+            0,
+            _nonce,
+            _receiver,
+            _collectableReward
+        );
     }
 
     /// @inheritdoc BaseDistributorUpgradeable

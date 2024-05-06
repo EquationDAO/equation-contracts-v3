@@ -75,6 +75,27 @@ contract RewardCollectorUpgradeable is EquationContractsV1RewardCollectorCompati
         );
     }
 
+    function collectFarmMarketReward(
+        uint32 _nonce,
+        uint16 _lockupPeriod,
+        uint16 _rewardType,
+        IMarketDescriptor _market,
+        uint200 _amount,
+        bytes calldata _signature,
+        address _receiver
+    ) external {
+        farmRewardDistributor.collectMarketReward(
+            msg.sender,
+            _nonce,
+            _lockupPeriod,
+            _rewardType,
+            _market,
+            _amount,
+            _signature,
+            _receiver
+        );
+    }
+
     function collectCampaignReward(
         uint32 _nonce,
         uint16 _rewardType,
