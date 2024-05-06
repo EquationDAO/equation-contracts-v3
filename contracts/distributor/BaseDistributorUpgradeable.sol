@@ -18,6 +18,7 @@ abstract contract BaseDistributorUpgradeable is IBaseDistributor, GovernableUpgr
         mapping(address account => uint32 nonce) nonces;
         mapping(address account => mapping(uint16 rewardType => uint200 amount)) collectedRewards;
         mapping(uint16 referralToken => mapping(uint16 rewardType => uint200 amount)) collectedReferralRewards;
+        mapping(address account => mapping(IMarketDescriptor market => mapping(uint16 rewardType => uint200 amount))) collectedMarketRewards;
     }
 
     // keccak256(abi.encode(uint256(keccak256("EquationDAO.storage.BaseDistributorUpgradeable")) - 1)) & ~bytes32(uint256(0xff));
@@ -76,6 +77,15 @@ abstract contract BaseDistributorUpgradeable is IBaseDistributor, GovernableUpgr
         uint16 _rewardType
     ) public view override returns (uint200) {
         return _baseDistributorStorage().collectedReferralRewards[_referralToken][_rewardType];
+    }
+
+    /// @inheritdoc IBaseDistributor
+    function collectedMarketRewards(
+        address _account,
+        IMarketDescriptor _market,
+        uint16 _rewardType
+    ) external view override returns (uint200) {
+        return _baseDistributorStorage().collectedMarketRewards[_account][_market][_rewardType];
     }
 
     function collectReward(
@@ -144,6 +154,30 @@ abstract contract BaseDistributorUpgradeable is IBaseDistributor, GovernableUpgr
         afterCollectReferralRewardsFinished(_account, _nonce, totalCollectableReward, _receiver, _data);
     }
 
+    function collectMarketReward(
+        address _account,
+        uint32 _nonce,
+        uint16 _rewardType,
+        IMarketDescriptor _market,
+        uint200 _amount,
+        bytes calldata _signature,
+        address _receiver,
+        bytes memory _data
+    ) internal virtual returns (uint200 collectableReward) {
+        BaseDistributorStorage storage $ = _baseDistributorStorage();
+        checkNonce($, _account, _nonce);
+        checkSignature($, _signature, abi.encode(_account, _nonce, _rewardType, _market, _amount));
+        checkRewardType(_rewardType);
+
+        $.nonces[_account] = _nonce;
+
+        mapping(uint16 => uint200) storage rewardTypeRewards = $.collectedMarketRewards[_account][_market];
+        collectableReward = _amount - rewardTypeRewards[_rewardType];
+        rewardTypeRewards[_rewardType] = _amount;
+
+        afterCollectMarketRewardFinished(_account, _nonce, _rewardType, _market, collectableReward, _receiver, _data);
+    }
+
     /// @dev Hook that is called after the reward is collected
     function afterCollectRewardFinished(
         address _account,
@@ -170,6 +204,17 @@ abstract contract BaseDistributorUpgradeable is IBaseDistributor, GovernableUpgr
         address _account,
         uint32 _nonce,
         uint200 _totalCollectableReward,
+        address _receiver,
+        bytes memory _data
+    ) internal virtual;
+
+    /// @dev Hook that is called after the reward is collected
+    function afterCollectMarketRewardFinished(
+        address _account,
+        uint32 _nonce,
+        uint16 _rewardType,
+        IMarketDescriptor _market,
+        uint200 _collectableReward,
         address _receiver,
         bytes memory _data
     ) internal virtual;

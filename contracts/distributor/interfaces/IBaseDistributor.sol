@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "../../IEquationContractsV1Minimum.sol";
+import "../../core/interfaces/IMarketDescriptor.sol";
 
 interface IBaseDistributor {
     struct CollectReferralTokenRewardParameter {
@@ -26,4 +27,10 @@ interface IBaseDistributor {
     function collectedRewards(address account, uint16 rewardType) external view returns (uint200);
 
     function collectedReferralRewards(uint16 referralToken, uint16 rewardType) external view returns (uint200);
+
+    function collectedMarketRewards(
+        address account,
+        IMarketDescriptor market,
+        uint16 rewardType
+    ) external view returns (uint200);
 }
