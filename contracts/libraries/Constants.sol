@@ -7,6 +7,8 @@ library Constants {
     uint8 internal constant VERTEX_NUM = 10;
     uint8 internal constant LATEST_VERTEX = VERTEX_NUM - 1;
 
+    uint32 internal constant FUNDING_RATE_SETTLE_CONFIG_INTERVAL = 8 hours;
+
     uint256 internal constant Q64 = 1 << 64;
     uint256 internal constant Q96 = 1 << 96;
     uint256 internal constant Q152 = 1 << 152;
