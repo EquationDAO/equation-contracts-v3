@@ -12,7 +12,7 @@ export async function registerMarkets(chainId: bigint) {
     }
     const document = require(`../deployments/${chainId}.json`);
 
-    const marketManager = await ethers.getContractAt("MarketManager", document.deployments.MarketManager);
+    const marketManager = await ethers.getContractAt("IMarketManager", document.deployments.MarketManagerUpgradeable);
     const marketIndexer = await ethers.getContractAt("MarketIndexer", document.deployments.MarketIndexer);
     const deployer = await ethers.getContractAt(
         "MarketDescriptorDeployer",
@@ -49,7 +49,7 @@ export async function registerMarkets(chainId: bigint) {
     }
 
     const fs = require("fs");
-    fs.writeFileSync(`deployments/${chainId}.json`, JSON.stringify(document));
+    fs.writeFileSync(`deployments/${chainId}.json`, JSON.stringify(document, null, 4));
 }
 
 async function main() {
