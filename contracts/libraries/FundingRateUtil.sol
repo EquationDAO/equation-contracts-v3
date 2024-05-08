@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: BUSL-1.1
-pragma solidity =0.8.23;
+pragma solidity ^0.8.0;
 
 import "./MarketUtil.sol";
 
@@ -196,7 +196,7 @@ library FundingRateUtil {
             // tempValueX96 is less than 1 << 146
             uint256 tempValueX96 = Math.ceilDiv(
                 (uint256(_feeRateCfgCache.protocolFundingFeeRate) * _timeDelta) << 96,
-                uint256(Constants.BASIS_POINTS_DIVISOR) * 8 hours
+                uint256(Constants.BASIS_POINTS_DIVISOR) * Constants.FUNDING_RATE_SETTLE_CONFIG_INTERVAL
             );
             longFundingRateX96 = Math.ceilDiv(
                 tempValueX96 * _feeRateCfgCache.protocolFundingCoeff,
@@ -238,7 +238,7 @@ library FundingRateUtil {
                 .mulDivUp(
                     fundingX96 <= 0 ? uint256(-fundingX96) : uint256(fundingX96),
                     _timDelta,
-                    uint256(Constants.BASIS_POINTS_DIVISOR) * 8 hours
+                    uint256(Constants.BASIS_POINTS_DIVISOR) * Constants.FUNDING_RATE_SETTLE_CONFIG_INTERVAL
                 )
                 .toInt256()
                 .toInt192();
