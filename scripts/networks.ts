@@ -48,7 +48,7 @@ const _100xCfg = {
         maxLeveragePerLiquidityPosition: 200n,
         maxLeveragePerPosition: 100n,
         liquidationFeeRatePerPosition: parsePercent("0.4%"),
-        maxPositionLiquidity: 25_000_000n * 10n ** 6n,
+        maxPositionLiquidity: 30_000_000n * 10n ** 6n,
         maxPositionValueRate: parsePercent("3000%"),
         maxSizeRatePerPosition: parsePercent("0.667%"),
     },
@@ -58,7 +58,7 @@ const _100xCfg = {
     priceCfg: {
         ...defaultPriceCfg,
         liquidationVertexIndex: 6,
-        maxPriceImpactLiquidity: 25_000_000n * 10n ** 6n,
+        maxPriceImpactLiquidity: 30_000_000n * 10n ** 6n,
         dynamicDepthLevel: parsePercent("10%"),
     },
 };
@@ -975,7 +975,7 @@ export const networks = {
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 100n,
                         liquidationFeeRatePerPosition: 400000n,
-                        maxPositionLiquidity: 25000000000000n,
+                        maxPositionLiquidity: 30000000000000n,
                         maxPositionValueRate: 3000000000n,
                         maxSizeRatePerPosition: 667000n,
                         liquidationExecutionFee: 800000n,
@@ -989,7 +989,7 @@ export const networks = {
                         liquidityFundingFeeRate: 25000000n,
                     },
                     priceCfg: {
-                        maxPriceImpactLiquidity: 25000000000000n,
+                        maxPriceImpactLiquidity: 30000000000000n,
                         liquidationVertexIndex: 6,
                         dynamicDepthMode: 0,
                         dynamicDepthLevel: 10000000n,
@@ -3439,6 +3439,6 @@ export const networks = {
                 },
             },
         ],
-        mixedExecutors: ["0x587C4526d4134cad229E8beA5007ACf30Dc7e8Dd", "0xE6d7Ccc73e0F7E1063E2204ffFA7742CC25E3B38"],
+        mixedExecutors: ["0x095A52eccB642AC82FF5Cb9059A82D5c4d2272df", "0x71324d35F7bCA2Db7D5afe3824531101C3e0Bf33"],
     },
 };
