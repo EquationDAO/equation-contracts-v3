@@ -1550,7 +1550,7 @@ export const networks = {
             },
             {
                 name: "LTC",
-                chainLinkPriceFeed: undefined,
+                chainLinkPriceFeed: "0x5698690a7B7B84F6aa985ef7690A8A7288FBc9c8",
                 maxCumulativeDeltaDiff: 100000n,
                 marketCfg: {
                     baseCfg: {
@@ -2000,7 +2000,7 @@ export const networks = {
             },
             {
                 name: "TIA",
-                chainLinkPriceFeed: undefined,
+                chainLinkPriceFeed: "0x4096b9bfB4c34497B7a3939D4f629cf65EBf5634",
                 maxCumulativeDeltaDiff: 100000n,
                 marketCfg: {
                     baseCfg: {
