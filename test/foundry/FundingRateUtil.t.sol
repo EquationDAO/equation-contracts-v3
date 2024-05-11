@@ -52,7 +52,8 @@ contract FundingRateUtilTest is Test {
             protocolFundingCoeff: 75e6, // 0.75
             interestRate: 10000, // 0.0001
             fundingBuffer: 50000, // 0.0005
-            liquidityFundingFeeRate: 5e7 // 0.5
+            liquidityFundingFeeRate: 5e7, // 0.5
+            maxFundingRate: 1e8 // 1
         });
         marketConfig.priceConfig.maxPriceImpactLiquidity = state.globalLiquidityPosition.liquidity;
     }

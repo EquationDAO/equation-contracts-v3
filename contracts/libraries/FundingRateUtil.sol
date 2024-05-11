@@ -244,6 +244,12 @@ library FundingRateUtil {
                 .toInt192();
         }
 
+        int192 maxFundingRateX96 = Math
+            .ceilDiv(uint256(_feeRateCfgCache.maxFundingRate) << 96, Constants.BASIS_POINTS_DIVISOR)
+            .toInt256()
+            .toInt192();
+        if (baseRateX96 > maxFundingRateX96) baseRateX96 = maxFundingRateX96;
+
         baseRateX96 = fundingX96 > 0 ? baseRateX96 : -baseRateX96;
     }
 }
