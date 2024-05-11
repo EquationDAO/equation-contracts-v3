@@ -11,7 +11,6 @@ interface IConfigurable {
         MarketBaseConfig baseConfig;
         MarketFeeRateConfig feeRateConfig;
         MarketPriceConfig priceConfig;
-        uint256[50] __gap;
     }
 
     struct MarketBaseConfig {
@@ -53,7 +52,6 @@ interface IConfigurable {
         // ==================== Other Configuration ==========================
         /// @notice The liquidation execution fee for LP and trader positions
         uint64 liquidationExecutionFee;
-        uint256[50] __gap;
     }
 
     struct MarketFeeRateConfig {
@@ -75,7 +73,6 @@ interface IConfigurable {
         uint32 liquidityFundingFeeRate;
         /// @notice The maximum funding rate, denominated in ten thousandths of a bip (i.e. 1e-8)
         uint32 maxFundingRate;
-        uint256[50] __gap;
     }
 
     struct VertexConfig {
@@ -97,7 +94,6 @@ interface IConfigurable {
         /// denominated in ten thousandths of a bip (i.e. 1e-8)
         uint32 dynamicDepthLevel;
         VertexConfig[10] vertices;
-        uint256[50] __gap;
     }
 
     /// @notice Emitted when a USD stablecoin is enabled

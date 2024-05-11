@@ -40,6 +40,9 @@ export async function registerMarkets(chainId: bigint) {
         }
         if ((await marketIndexer.marketIndexes(marketAddr)) === 0n) {
             await marketIndexer.assignMarketIndex(marketAddr);
+            if (document.deployments.registerMarkets === undefined) {
+                document.deployments.registerMarkets = [];
+            }
             document.deployments.registerMarkets.push({
                 name: item.name,
                 index: parseInt((await marketIndexer.marketIndexes(marketAddr)).toString()),

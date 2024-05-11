@@ -233,35 +233,35 @@ async function main() {
     // register markets
     const MarketDescriptor = await ethers.getContractFactory("MarketDescriptor");
     const marketDescriptorInitCodeHash = keccak256(MarketDescriptor.bytecode);
-    let markets = [];
-    let index = 1;
-    for (let item of network.markets) {
-        await marketDescriptorDeployer.deploy(item.name);
-        const marketAddr = getCreate2Address(
-            marketDescriptorDeployerAddr,
-            keccak256(encodePacked(item.name)!),
-            marketDescriptorInitCodeHash,
-        );
-        await marketManager.enableMarket(marketAddr, {
-            baseConfig: item.marketCfg.baseCfg,
-            feeRateConfig: item.marketCfg.feeRateCfg,
-            priceConfig: item.marketCfg.priceCfg,
-        });
-        await marketIndexer.assignMarketIndex(marketAddr);
-        if (item.chainLinkPriceFeed != undefined) {
-            await priceFeed.setRefPriceFeed(marketAddr, item.chainLinkPriceFeed);
-            await priceFeed.setMaxCumulativeDeltaDiffs(marketAddr, item.maxCumulativeDeltaDiff);
-        } else {
-            console.warn(`👿👿${item.name} chainLinkPriceFeed is not set👿👿`);
-        }
+    // let markets = [];
+    // let index = 1;
+    // for (let item of network.markets) {
+    //     await marketDescriptorDeployer.deploy(item.name);
+    //     const marketAddr = getCreate2Address(
+    //         marketDescriptorDeployerAddr,
+    //         keccak256(encodePacked(item.name)!),
+    //         marketDescriptorInitCodeHash,
+    //     );
+    //     await marketManager.enableMarket(marketAddr, {
+    //         baseConfig: item.marketCfg.baseCfg,
+    //         feeRateConfig: item.marketCfg.feeRateCfg,
+    //         priceConfig: item.marketCfg.priceCfg,
+    //     });
+    //     await marketIndexer.assignMarketIndex(marketAddr);
+    //     if (item.chainLinkPriceFeed != undefined) {
+    //         await priceFeed.setRefPriceFeed(marketAddr, item.chainLinkPriceFeed);
+    //         await priceFeed.setMaxCumulativeDeltaDiffs(marketAddr, item.maxCumulativeDeltaDiff);
+    //     } else {
+    //         console.warn(`👿👿${item.name} chainLinkPriceFeed is not set👿👿`);
+    //     }
 
-        markets.push({
-            name: item.name,
-            index: index++,
-            market: marketAddr,
-        });
-    }
-    deployments.set("registerMarkets", markets);
+    //     markets.push({
+    //         name: item.name,
+    //         index: index++,
+    //         market: marketAddr,
+    //     });
+    // }
+    // deployments.set("registerMarkets", markets);
 
     // initialize price feed
     await priceFeed.setUpdater(mixedExecutorAddr, true);
