@@ -110,6 +110,9 @@ library ConfigurableUtil {
 
         if (_newCfg.liquidityFundingFeeRate > Constants.BASIS_POINTS_DIVISOR)
             revert IConfigurable.InvalidLiquidityFundingFeeRate(_newCfg.liquidityFundingFeeRate);
+
+        if (_newCfg.maxFundingRate > Constants.BASIS_POINTS_DIVISOR)
+            revert IConfigurable.InvalidMaxFundingRate(_newCfg.maxFundingRate);
     }
 
     function _validatePriceConfig(IConfigurable.MarketPriceConfig calldata _newCfg) private pure {

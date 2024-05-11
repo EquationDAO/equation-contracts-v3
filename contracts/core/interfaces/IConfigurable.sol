@@ -71,6 +71,8 @@ interface IConfigurable {
         uint32 fundingBuffer;
         /// @notice The liquidity funding fee rate, denominated in ten thousandths of a bip (i.e. 1e-8)
         uint32 liquidityFundingFeeRate;
+        /// @notice The maximum funding rate, denominated in ten thousandths of a bip (i.e. 1e-8)
+        uint32 maxFundingRate;
     }
 
     struct VertexConfig {
@@ -141,7 +143,7 @@ interface IConfigurable {
     error InvalidMaxPositionLiquidity(uint128 maxPositionLiquidity);
     /// @notice Invalid maximum position value rate
     error InvalidMaxPositionValueRate(uint32 maxPositionValueRate);
-    /// @notice Invalid max size per rate for per psoition
+    /// @notice Invalid maximum size per rate for per psoition
     error InvalidMaxSizeRatePerPosition(uint32 maxSizeRatePerPosition);
     /// @notice Invalid protocol funding fee rate
     error InvalidProtocolFundingFeeRate(uint32 protocolFundingFeeRate);
@@ -155,6 +157,8 @@ interface IConfigurable {
     error InvalidFundingBuffer(uint32 fundingBuffer);
     /// @notice Invalid liquidity funding fee rate
     error InvalidLiquidityFundingFeeRate(uint32 liquidityFundingFeeRate);
+    /// @notice Invalid maximum funding rate
+    error InvalidMaxFundingRate(uint32 maxFundingRate);
     /// @notice Invalid maximum price impact liquidity
     error InvalidMaxPriceImpactLiquidity(uint128 maxPriceImpactLiquidity);
     /// @notice Invalid vertices length

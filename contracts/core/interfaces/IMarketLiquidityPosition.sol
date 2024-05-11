@@ -25,6 +25,7 @@ interface IMarketLiquidityPosition {
         ///     2. Funding fee is added
         ///     3. Liquidation loss is added
         int256 unrealizedPnLGrowthX64;
+        uint256[50] __gap;
     }
 
     struct LiquidityPosition {
@@ -35,6 +36,7 @@ interface IMarketLiquidityPosition {
         /// @notice The snapshot of `GlobalLiquidityPosition.realizedProfitGrowthX64`
         /// at the time of the position was opened.
         int256 entryUnrealizedPnLGrowthX64;
+        uint256[50] __gap;
     }
 
     /// @notice Emitted when the global liquidity position net position changed

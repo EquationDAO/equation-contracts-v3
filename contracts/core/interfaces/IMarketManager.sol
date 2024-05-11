@@ -28,6 +28,7 @@ interface IMarketManager is IMarketErrors, IMarketPosition, IMarketLiquidityPosi
         PriceVertex[10] priceVertices;
         /// @notice The net sizes of the liquidation buffer
         uint128[10] liquidationBufferNetSizes;
+        uint256[50] __gap;
     }
 
     struct GlobalLiquidationFund {
@@ -46,6 +47,7 @@ interface IMarketManager is IMarketErrors, IMarketPosition, IMarketLiquidityPosi
         int256 liquidationFund;
         /// @notice The total liquidity of the liquidation fund
         uint256 liquidity;
+        uint256[50] __gap;
     }
 
     struct State {
@@ -72,6 +74,7 @@ interface IMarketManager is IMarketErrors, IMarketPosition, IMarketLiquidityPosi
         GlobalLiquidationFund globalLiquidationFund;
         /// @notice Mapping of account to liquidation fund position
         mapping(address account => uint256 liquidity) liquidationFundPositions;
+        uint256[50] __gap;
     }
 
     /// @notice Emitted when the price vertex is changed

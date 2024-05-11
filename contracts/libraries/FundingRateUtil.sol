@@ -219,7 +219,7 @@ library FundingRateUtil {
         uint128 _longSize,
         uint128 _shortSize,
         uint128 _premiumRateX96,
-        uint64 _timDelta
+        uint64 _timeDelta
     ) internal pure returns (int192 baseRateX96) {
         int256 fundingX96;
         unchecked {
@@ -237,11 +237,19 @@ library FundingRateUtil {
             baseRateX96 = Math
                 .mulDivUp(
                     fundingX96 <= 0 ? uint256(-fundingX96) : uint256(fundingX96),
-                    _timDelta,
+                    _timeDelta,
                     uint256(Constants.BASIS_POINTS_DIVISOR) * Constants.FUNDING_RATE_SETTLE_CONFIG_INTERVAL
                 )
                 .toInt256()
                 .toInt192();
+        }
+
+        int256 maxFundingRateX96 = Math
+            .ceilDiv(uint256(_feeRateCfgCache.maxFundingRate) << 96, Constants.BASIS_POINTS_DIVISOR)
+            .toInt256();
+        int256 oneHourBaseRateX96 = (int256(baseRateX96) * 1 hours) / int128(uint128(_timeDelta));
+        if (oneHourBaseRateX96 > maxFundingRateX96) {
+            baseRateX96 = Math.mulDivUp(uint256(maxFundingRateX96), _timeDelta, 1 hours).toInt256().toInt192();
         }
 
         baseRateX96 = fundingX96 > 0 ? baseRateX96 : -baseRateX96;

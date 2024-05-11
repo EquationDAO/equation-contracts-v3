@@ -23,6 +23,7 @@ interface IMarketPosition {
         int192 shortFundingRateGrowthX96;
         /// @notice The last time the funding fee is settled
         uint64 lastFundingFeeSettleTime;
+        uint256[50] __gap;
     }
 
     struct Position {
@@ -36,6 +37,7 @@ interface IMarketPosition {
         /// For long positions it is `GlobalPosition.longFundingRateGrowthX96`,
         /// and for short positions it is `GlobalPosition.shortFundingRateGrowthX96`
         int192 entryFundingRateGrowthX96;
+        uint256[50] __gap;
     }
     /// @notice Emitted when the funding fee is settled
     /// @param market The descriptor used to describe the metadata of the market, such as symbol, name, decimals
