@@ -21,7 +21,7 @@ const defaultFeeRateCfg = {
     interestRate: parsePercent("0.01%"),
     fundingBuffer: parsePercent("0.05%"),
     liquidityFundingFeeRate: parsePercent("25%"),
-    maxFundingRate: parsePercent("0.5%"),
+    maxFundingRate: parsePercent("4%"),
 };
 
 const defaultPriceCfg = {
@@ -55,6 +55,7 @@ const _100xCfg = {
     },
     feeRateCfg: {
         ...defaultFeeRateCfg,
+        maxFundingRate: parsePercent("1%"),
     },
     priceCfg: {
         ...defaultPriceCfg,
@@ -170,6 +171,7 @@ export const networks = {
                     },
                     feeRateCfg: {
                         ..._100xCfg.feeRateCfg,
+                        maxFundingRate: parsePercent("0.6%"),
                     },
                     priceCfg: {
                         ..._100xCfg.priceCfg,
@@ -988,6 +990,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 1000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 30000000000000n,
@@ -1033,6 +1036,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 600000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 35000000000000n,
@@ -1061,7 +1065,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -1078,6 +1082,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 3500000000000n,
@@ -1106,7 +1111,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -1123,6 +1128,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -1151,7 +1157,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -1168,6 +1174,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -1196,7 +1203,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -1213,6 +1220,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -1241,7 +1249,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -1258,6 +1266,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -1286,7 +1295,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -1303,6 +1312,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -1331,7 +1341,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -1348,6 +1358,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
@@ -1376,7 +1387,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -1393,6 +1404,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -1421,7 +1433,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -1438,6 +1450,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -1466,7 +1479,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -1483,6 +1496,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -1511,7 +1525,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -1528,6 +1542,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -1556,7 +1571,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -1573,6 +1588,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -1601,7 +1617,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -1618,6 +1634,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -1646,7 +1663,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -1663,6 +1680,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
@@ -1691,7 +1709,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -1708,6 +1726,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
@@ -1736,7 +1755,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -1753,6 +1772,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -1781,7 +1801,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -1798,6 +1818,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
@@ -1826,7 +1847,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -1843,6 +1864,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
@@ -1871,7 +1893,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -1888,6 +1910,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -1916,7 +1939,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -1933,6 +1956,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
@@ -1961,7 +1985,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -1978,6 +2002,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
@@ -2006,7 +2031,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2023,6 +2048,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
@@ -2051,7 +2077,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2068,6 +2094,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2096,7 +2123,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2113,6 +2140,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
@@ -2141,7 +2169,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2158,6 +2186,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2186,7 +2215,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2203,6 +2232,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2231,7 +2261,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2248,6 +2278,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2276,7 +2307,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2293,6 +2324,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2321,7 +2353,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2338,6 +2370,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2366,7 +2399,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2383,6 +2416,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2411,7 +2445,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2428,6 +2462,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 800000000000n,
@@ -2456,7 +2491,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2473,6 +2508,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2501,7 +2537,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2518,6 +2554,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2546,7 +2583,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2563,6 +2600,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2591,7 +2629,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2608,6 +2646,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2636,7 +2675,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2653,6 +2692,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2681,7 +2721,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2698,6 +2738,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
@@ -2726,7 +2767,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2743,6 +2784,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 800000000000n,
@@ -2771,7 +2813,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2788,6 +2830,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
@@ -2816,7 +2859,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2833,6 +2876,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
@@ -2861,7 +2905,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -2878,6 +2922,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 800000000000n,
@@ -2906,7 +2951,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -2923,6 +2968,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -2951,7 +2997,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 20n,
@@ -2968,6 +3014,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
@@ -2996,7 +3043,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -3013,6 +3060,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
@@ -3041,7 +3089,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -3058,6 +3106,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 800000000000n,
@@ -3086,7 +3135,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -3103,6 +3152,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
@@ -3131,7 +3181,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -3148,6 +3198,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
@@ -3176,7 +3227,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -3193,6 +3244,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
@@ -3221,7 +3273,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -3238,6 +3290,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
@@ -3266,7 +3319,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -3283,6 +3336,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 800000000000n,
@@ -3311,7 +3365,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -3328,6 +3382,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
@@ -3356,7 +3411,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -3373,6 +3428,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 800000000000n,
@@ -3401,7 +3457,7 @@ export const networks = {
                 marketCfg: {
                     baseCfg: {
                         minMarginPerLiquidityPosition: 10000000n,
-                        maxLeveragePerLiquidityPosition: 100n,
+                        maxLeveragePerLiquidityPosition: 200n,
                         liquidationFeeRatePerLiquidityPosition: 50000n,
                         minMarginPerPosition: 10000000n,
                         maxLeveragePerPosition: 10n,
@@ -3418,6 +3474,7 @@ export const networks = {
                         interestRate: 10000n,
                         fundingBuffer: 50000n,
                         liquidityFundingFeeRate: 25000000n,
+                        maxFundingRate: 4000000n,
                     },
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
