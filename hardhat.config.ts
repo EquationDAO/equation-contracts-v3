@@ -49,7 +49,7 @@ const config: HardhatUserConfig = {
             accounts: accounts,
         },
         "arbitrum-mainnet": {
-            url: "https://rpc.arb1.arbitrum.gateway.fm",
+            url: "https://arb1.arbitrum.io/rpc",
             chainId: 42161,
             accounts: accounts,
         },
