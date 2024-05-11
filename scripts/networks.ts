@@ -66,7 +66,7 @@ const _100xCfg = {
 const _20xCfg = {
     baseCfg: {
         ...defaultBaseCfg,
-        maxLeveragePerLiquidityPosition: 100n,
+        maxLeveragePerLiquidityPosition: 200n,
         maxLeveragePerPosition: 20n,
         liquidationFeeRatePerPosition: parsePercent("1%"),
         maxPositionLiquidity: 1_500_000n * 10n ** 6n,
@@ -99,7 +99,7 @@ const _20xCfg = {
 const _10xCfg = {
     baseCfg: {
         ...defaultBaseCfg,
-        maxLeveragePerLiquidityPosition: 100n,
+        maxLeveragePerLiquidityPosition: 200n,
         maxLeveragePerPosition: 10n,
         liquidationFeeRatePerPosition: parsePercent("2.5%"),
         maxPositionLiquidity: 1_000_000n * 10n ** 6n,
@@ -952,8 +952,8 @@ export const networks = {
     "arbitrum-mainnet": {
         usd: "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
         usdChainLinkPriceFeed: "0x3f3f5dF88dC9F13eac63DF89EC16ef6e7E25DdE7",
-        minPositionRouterExecutionFee: ethers.parseUnits("0.0003", "ether"),
-        minOrderBookExecutionFee: ethers.parseUnits("0.0004", "ether"),
+        minPositionRouterExecutionFee: ethers.parseUnits("0.0001", "ether"),
+        minOrderBookExecutionFee: ethers.parseUnits("0.00013", "ether"),
         sequencerUptimeFeed: "0xFdB631F5EE196F0ed6FAa767959853A9F217697D",
         ignoreReferencePriceFeedError: true,
         equ: "0x87AAfFdF26c6885f6010219208D5B161ec7609c0",
