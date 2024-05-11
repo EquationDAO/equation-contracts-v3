@@ -336,23 +336,22 @@ function expectAddr(actual: string, expected: string) {
 async function deployLibraries() {
     const ConfigurableUtil = await ethers.getContractFactory("ConfigurableUtil");
     const configurableUtil = await ConfigurableUtil.deploy();
+    await configurableUtil.waitForDeployment();
 
     const FundingRateUtil = await ethers.getContractFactory("FundingRateUtil");
     const fundingRateUtil = await FundingRateUtil.deploy();
+    await fundingRateUtil.waitForDeployment();
 
     const LiquidityPositionUtil = await ethers.getContractFactory("LiquidityPositionUtil");
     const liquidityPositionUtil = await LiquidityPositionUtil.deploy();
+    await liquidityPositionUtil.waitForDeployment();
 
     const MarketUtil = await ethers.getContractFactory("MarketUtil");
     const marketUtil = await MarketUtil.deploy();
+    await marketUtil.waitForDeployment();
 
     const PositionUtil = await ethers.getContractFactory("PositionUtil");
     const positionUtil = await PositionUtil.deploy();
-
-    await configurableUtil.waitForDeployment();
-    await fundingRateUtil.waitForDeployment();
-    await liquidityPositionUtil.waitForDeployment();
-    await marketUtil.waitForDeployment();
     await positionUtil.waitForDeployment();
 
     console.log(`ConfigurableUtil deployed to: ${await configurableUtil.getAddress()}`);
