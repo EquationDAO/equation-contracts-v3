@@ -21,6 +21,7 @@ const defaultFeeRateCfg = {
     interestRate: parsePercent("0.01%"),
     fundingBuffer: parsePercent("0.05%"),
     liquidityFundingFeeRate: parsePercent("25%"),
+    maxFundingRate: parsePercent("0.5%"),
 };
 
 const defaultPriceCfg = {

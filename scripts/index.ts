@@ -3,8 +3,6 @@ import {networks} from "./networks";
 import {getContractAddress, getCreate2Address} from "@ethersproject/address";
 import {keccak256} from "@ethersproject/keccak256";
 import {encodePacked} from "web3-utils";
-import {OrderBookUpgradeable, PositionRouterUpgradeable, RouterUpgradeable} from "../typechain-types";
-import {parsePercent} from "./util";
 
 async function main() {
     const network = networks[hardhatArguments.network as keyof typeof networks];
