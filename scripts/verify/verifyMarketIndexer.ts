@@ -2,6 +2,4 @@ import "dotenv/config";
 
 const document = require(`../../deployments/${process.env.CHAIN_ID}.json`);
 
-module.exports = [
-    `${document.deployments.MarketManager}`,
-];
+module.exports = [`${document.deployments.MarketManagerUpgradeable}`];

@@ -70,7 +70,7 @@ async function main() {
     deployments.set("MarketIndexer", marketIndexerAddr);
     deployments.set("MarketManagerUpgradeable", marketManagerAddr);
     deployments.set("MixedExecutorUpgradeable", mixedExecutorAddr);
-    deployments.set("ExecutorAssistantUpgradeable", executorAssistantAddr);
+    deployments.set("ExecutorAssistant", executorAssistantAddr);
     deployments.set("FarmRewardDistributorUpgradeable", farmRewardDistributorAddr);
     deployments.set("ProtocolFeeDistributorUpgradeable", protocolFeeDistributorAddr);
     deployments.set("RewardCollectorUpgradeable", rewardCollectorAddr);

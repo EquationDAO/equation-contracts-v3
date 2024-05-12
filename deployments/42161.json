@@ -18,7 +18,7 @@
         "MarketIndexer": "0x84cEE71cc1d3E8E7Ea9062431192280A3dae5594",
         "MarketManagerUpgradeable": "0xDe2b77bcbAEf4C5ECE3b827B21fbD8556e8Fa5a4",
         "MixedExecutorUpgradeable": "0xA37D8161945029fC7561a3843FCCa039b3e98C5E",
-        "ExecutorAssistantUpgradeable": "0x5E358BffdcF3A8f19Ed0c930e72f7886f23E4683",
+        "ExecutorAssistant": "0x5E358BffdcF3A8f19Ed0c930e72f7886f23E4683",
         "FarmRewardDistributorUpgradeable": "0x304bFe686ABA4E942ed5E625D96AFfC3488E8D63",
         "ProtocolFeeDistributorUpgradeable": "0x237F43C50cde8e3f6bF01cCf3D3Cd26bA50345bB",
         "RewardCollectorUpgradeable": "0x944D4Da78e198eA4d38Df99c68d225212DDFDaE7",
