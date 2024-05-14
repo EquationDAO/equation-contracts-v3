@@ -28,6 +28,7 @@ contract FundingRateUtilTest is Test {
         priceFeed.setMinPriceX96(1 << 95);
 
         state.protocolFee = 1000;
+        uint256[50] memory gap;
         state.globalPosition = IMarketPosition.GlobalPosition({
             longSize: 0,
             shortSize: 0,
@@ -35,7 +36,8 @@ contract FundingRateUtilTest is Test {
             maxSizePerPosition: 0,
             longFundingRateGrowthX96: 1,
             shortFundingRateGrowthX96: 1,
-            lastFundingFeeSettleTime: uint64(block.timestamp)
+            lastFundingFeeSettleTime: uint64(block.timestamp),
+            __gap: gap
         });
         state.globalLiquidityPosition = IMarketLiquidityPosition.GlobalLiquidityPosition({
             netSize: 0,
@@ -43,7 +45,8 @@ contract FundingRateUtilTest is Test {
             previousSPPriceX96: 0,
             side: LONG,
             liquidity: 10000000e6,
-            unrealizedPnLGrowthX64: 0
+            unrealizedPnLGrowthX64: 0,
+            __gap: gap
         });
 
         marketConfig.feeRateConfig = IConfigurable.MarketFeeRateConfig({

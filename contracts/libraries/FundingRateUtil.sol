@@ -81,6 +81,9 @@ library FundingRateUtil {
             indexPriceX96,
             timeDelta
         );
+        // long and short funding fee should be non-positive
+        longFundingFee = -longFundingFee;
+        shortFundingFee = -shortFundingFee;
 
         (uint128 paidSize, uint128 receivedSize, uint256 paidFundingRateX96) = baseRateX96 >= 0
             ? (longSize, shortSize, uint256(int256(baseRateX96)))
@@ -104,11 +107,11 @@ library FundingRateUtil {
             }
 
             if (baseRateX96 >= 0) {
-                longFundingFee = -longFundingFee - paidFundingFee;
-                shortFundingFee = -shortFundingFee + receivedFundingFee;
+                longFundingFee -= paidFundingFee;
+                shortFundingFee += receivedFundingFee;
             } else {
-                longFundingFee = -longFundingFee + receivedFundingFee;
-                shortFundingFee = -shortFundingFee - paidFundingFee;
+                longFundingFee += receivedFundingFee;
+                shortFundingFee -= paidFundingFee;
             }
         }
 
