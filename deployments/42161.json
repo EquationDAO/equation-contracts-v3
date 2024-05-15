@@ -5,7 +5,7 @@
     "marketDescriptorInitCodeHash": "0xb1b7f4d05ce93782ca80d1d5935cfc82a6c73f42ea170f618f6cefbc0f684e64",
     "deployments": {
         "ConfigurableUtil": "0xa2c958F2C6eE58ce394aC448bE5141528C3A70Cc",
-        "FundingRateUtil": "0x19c31173c7f03075A120E1b5747f7d2927Eb32e2",
+        "FundingRateUtil": "0xD706E6D1680740B699459C0D21526E76DB7E8EaD",
         "LiquidityPositionUtil": "0x91FEC55bF1725f4e3c88456BFdCd5725e0d016EA",
         "MarketUtil": "0x165bB409baf41955825C67cC55e34d7247907F50",
         "PositionUtil": "0x9D17AfF835d5651DC7104B3f7EE18A6Be70aF648",
