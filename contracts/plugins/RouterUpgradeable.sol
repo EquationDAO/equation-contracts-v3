@@ -197,6 +197,36 @@ contract RouterUpgradeable is PluginManagerUpgradeable {
             );
     }
 
+    /// @notice Decrease the margin/liquidity (value) of a position
+    /// @param _market The market in which to decrease position
+    /// @param _account The owner of the position
+    /// @param _side The side of the position (Long or Short)
+    /// @param _marginDelta The decrease in margin, which can be 0
+    /// @param _sizeDelta The decrease in size, which can be 0
+    /// @param _receiver The address to receive the margin
+    /// @return tradePriceX96 The trade price at which the position is adjusted.
+    /// If only reducing margin, it returns 0, as a Q64.96
+    /// @return useEntryPriceAsTradePrice Whether to use the entry price as the trade price
+    function pluginDecreasePositionV2(
+        IMarketDescriptor _market,
+        address _account,
+        Side _side,
+        uint128 _marginDelta,
+        uint128 _sizeDelta,
+        address _receiver
+    ) external returns (uint160 tradePriceX96, bool useEntryPriceAsTradePrice) {
+        _onlyPluginApproved(_account);
+        return
+            _routerStorage().marketManager.decreasePositionV2(
+                _market,
+                _account,
+                _side,
+                _marginDelta,
+                _sizeDelta,
+                _receiver
+            );
+    }
+
     /// @notice Liquidate a position
     /// @param _market The market in which to close position
     /// @param _account The owner of the position
