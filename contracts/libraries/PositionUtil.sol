@@ -199,7 +199,8 @@ library PositionUtil {
             fundingFee
         );
 
-        // TODO: add entry time
+        // If the position is newly created, set the entry time
+        if (positionCache.size == 0) position.entryTime = block.timestamp.toUint64();
     }
 
     function decreasePosition(
@@ -247,8 +248,6 @@ library PositionUtil {
 
             unchecked {
                 if (
-                    _parameter.minProfitDuration > 0 &&
-                    positionCache.entryTime > 0 &&
                     uint256(positionCache.entryTime) + _parameter.minProfitDuration > block.timestamp &&
                     hasUnrealizedProfit(_parameter.side, positionCache.entryPriceX96, tradePriceX96)
                 ) {
