@@ -111,6 +111,18 @@ interface IMarketPosition {
         address receiver
     );
 
+    /// @notice Emitted when the position margin/liquidity (value) is decreased by the entry price
+    /// @param market The descriptor used to describe the metadata of the market, such as symbol, name, decimals
+    /// @param account The owner of the position
+    /// @param side The side of the position (Long or Short)
+    /// @param actualTradePriceX96 The actual trade price at which the position is decreased, as a Q64.96
+    event PositionDecreasedByEntryPrice(
+        IMarketDescriptor indexed market,
+        address indexed account,
+        Side side,
+        uint160 actualTradePriceX96
+    );
+
     /// @notice Emitted when a position is liquidated
     /// @param market The descriptor used to describe the metadata of the market, such as symbol, name, decimals
     /// @param liquidator The address that executes the liquidation of the position
@@ -184,6 +196,26 @@ interface IMarketPosition {
         uint128 sizeDelta,
         address receiver
     ) external returns (uint160 tradePriceX96);
+
+    /// @notice Decrease the margin/liquidity (value) of a position
+    /// @dev The call will fail if the caller is not the `IRouter` or the position does not exist
+    /// @param market The descriptor used to describe the metadata of the market, such as symbol, name, decimals
+    /// @param account The owner of the position
+    /// @param side The side of the position (Long or Short)
+    /// @param marginDelta The decrease in margin, which can be 0
+    /// @param sizeDelta The decrease in size, which can be 0
+    /// @param receiver The address to receive the margin
+    /// @return tradePriceX96 The trade price at which the position is adjusted.
+    /// If only reducing margin, it returns 0, as a Q64.96
+    /// @return useEntryPriceAsTradePrice Whether to use the entry price as the trade price
+    function decreasePositionV2(
+        IMarketDescriptor market,
+        address account,
+        Side side,
+        uint128 marginDelta,
+        uint128 sizeDelta,
+        address receiver
+    ) external returns (uint160 tradePriceX96, bool useEntryPriceAsTradePrice);
 
     /// @notice Liquidate a position
     /// @dev The call will fail if the caller is not the `IRouter` or the position does not exist

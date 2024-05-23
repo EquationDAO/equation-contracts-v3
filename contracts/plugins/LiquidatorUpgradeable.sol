@@ -66,7 +66,10 @@ contract LiquidatorUpgradeable is ILiquidator, GovernableUpgradeable {
         // Fast path, if the position is empty or there is no unrealized profit in the position,
         // liquidate the position directly
 
-        if (position.size == 0 || !_hasUnrealizedProfit(_side, position.entryPriceX96, decreaseIndexPriceX96)) {
+        if (
+            position.size == 0 ||
+            !PositionUtil.hasUnrealizedProfit(_side, position.entryPriceX96, decreaseIndexPriceX96)
+        ) {
             router.pluginLiquidatePosition(_market, _account, _side, _feeReceiver);
             return;
         }
@@ -102,14 +105,6 @@ contract LiquidatorUpgradeable is ILiquidator, GovernableUpgradeable {
 
     function _onlyExecutor() private view {
         if (!executors[msg.sender]) revert Forbidden();
-    }
-
-    function _hasUnrealizedProfit(
-        Side _side,
-        uint160 _entryPriceX96,
-        uint160 _indexPriceX96
-    ) private pure returns (bool) {
-        return _side.isLong() ? _indexPriceX96 > _entryPriceX96 : _indexPriceX96 < _entryPriceX96;
     }
 
     /// @dev The function is similar to `PositionUtil#_validatePositionLiquidateMaintainMarginRate`

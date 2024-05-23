@@ -25,6 +25,7 @@ library PositionUtil {
         uint128 sizeDelta;
         IPriceFeed priceFeed;
         address receiver;
+        uint16 minProfitDuration;
     }
 
     struct LiquidatePositionParameter {
@@ -197,13 +198,15 @@ library PositionUtil {
             entryPriceAfterX96,
             fundingFee
         );
+
+        // TODO: add entry time
     }
 
     function decreasePosition(
         IMarketManager.State storage _state,
         IConfigurable.MarketConfig storage _marketCfg,
         DecreasePositionParameter memory _parameter
-    ) public returns (uint160 tradePriceX96, uint128 adjustedMarginDelta) {
+    ) public returns (uint160 tradePriceX96, bool useEntryPriceAsTradePrice, uint128 adjustedMarginDelta) {
         IMarketManager.Position memory positionCache = _state.positions[_parameter.account][_parameter.side];
         if (positionCache.size == 0) revert IMarketErrors.PositionNotFound(_parameter.account, _parameter.side);
 
@@ -218,6 +221,7 @@ library PositionUtil {
 
         uint128 sizeAfter = positionCache.size;
         int256 realizedPnLDelta;
+        uint160 actualTradePriceX96;
         if (_parameter.sizeDelta > 0) {
             // never underflow because of the validation above
             // prettier-ignore
@@ -240,6 +244,19 @@ library PositionUtil {
                     dynamicDepthLevel: priceConfig.dynamicDepthLevel
                 })
             );
+
+            unchecked {
+                if (
+                    _parameter.minProfitDuration > 0 &&
+                    positionCache.entryTime > 0 &&
+                    uint256(positionCache.entryTime) + _parameter.minProfitDuration > block.timestamp &&
+                    hasUnrealizedProfit(_parameter.side, positionCache.entryPriceX96, tradePriceX96)
+                ) {
+                    useEntryPriceAsTradePrice = true;
+                    actualTradePriceX96 = tradePriceX96;
+                    tradePriceX96 = positionCache.entryPriceX96;
+                }
+            }
 
             _initializeAndSettleLiquidityUnrealizedPnL(
                 _state.globalLiquidityPosition,
@@ -320,6 +337,14 @@ library PositionUtil {
             fundingFee,
             _parameter.receiver
         );
+
+        if (useEntryPriceAsTradePrice)
+            emit IMarketPosition.PositionDecreasedByEntryPrice(
+                _parameter.market,
+                _parameter.account,
+                _parameter.side,
+                actualTradePriceX96
+            );
     }
 
     function liquidatePosition(
@@ -503,6 +528,15 @@ library PositionUtil {
     /// @return liquidity The liquidity (value) of the position
     function calculateLiquidity(uint128 _size, uint160 _priceX96) internal pure returns (uint128 liquidity) {
         liquidity = Math.mulDivUp(_size, _priceX96, Constants.Q96).toUint128();
+    }
+
+    /// @notice Check if a position has unrealized profit
+    function hasUnrealizedProfit(
+        Side _side,
+        uint160 _entryPriceX96,
+        uint160 _tradePriceX96
+    ) internal pure returns (bool) {
+        return _side.isLong() ? _tradePriceX96 > _entryPriceX96 : _tradePriceX96 < _entryPriceX96;
     }
 
     /// @dev Calculate the unrealized PnL of a position based on entry price
