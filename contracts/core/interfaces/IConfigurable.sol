@@ -127,6 +127,11 @@ interface IConfigurable {
     /// @param newCfg The new market price configuration
     event MarketPriceConfigChanged(IMarketDescriptor indexed market, MarketPriceConfig newCfg);
 
+    /// @notice Emitted when the minimum profit duration of the market is changed
+    /// @param market The descriptor used to describe the metadata of the market, such as symbol, name, decimals
+    /// @param newMinProfitDuration The new minimum profit duration
+    event MarketMinProfitDurationChanged(IMarketDescriptor indexed market, uint16 newMinProfitDuration);
+
     /// @notice Market is not enabled
     error MarketNotEnabled(IMarketDescriptor market);
     /// @notice Market is already enabled
@@ -202,6 +207,10 @@ interface IConfigurable {
         uint8 index
     ) external view returns (VertexConfig memory);
 
+    /// @notice Get the minimum profit duration of the market
+    /// @param market The descriptor used to describe the metadata of the market, such as symbol, name, decimals
+    function marketMinProfitDuration(IMarketDescriptor market) external view returns (uint16 minProfitDuration);
+
     /// @notice Enable a market
     /// @dev The call will fail if caller is not the governor or the market is already enabled
     /// @param market The descriptor used to describe the metadata of the market, such as symbol, name, decimals
@@ -225,4 +234,10 @@ interface IConfigurable {
     /// @param market The descriptor used to describe the metadata of the market, such as symbol, name, decimals
     /// @param newCfg The new market price configuration
     function updateMarketPriceConfig(IMarketDescriptor market, MarketPriceConfig calldata newCfg) external;
+
+    /// @notice Update the minimum profit duration of the market
+    /// @dev The call will fail if caller is not the governor or the market is not enabled
+    /// @param market The descriptor used to describe the metadata of the market, such as symbol, name, decimals
+    /// @param minProfitDuration The new minimum profit duration
+    function updateMarketMinProfitDuration(IMarketDescriptor market, uint16 minProfitDuration) external;
 }

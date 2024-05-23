@@ -67,6 +67,20 @@ library ConfigurableUtil {
         emit IConfigurable.MarketPriceConfigChanged(_market, _newCfg);
     }
 
+    function updateMarketMinProfitDuration(
+        mapping(IMarketDescriptor => IConfigurable.MarketConfig) storage _self,
+        mapping(IMarketDescriptor => uint16) storage _marketMinProfitDurations,
+        IMarketDescriptor _market,
+        uint16 _minProfitDuration
+    ) public {
+        IConfigurable.MarketConfig storage marketCfg = _self[_market];
+        if (marketCfg.baseConfig.maxLeveragePerLiquidityPosition == 0) revert IConfigurable.MarketNotEnabled(_market);
+
+        _marketMinProfitDurations[_market] = _minProfitDuration;
+
+        emit IConfigurable.MarketMinProfitDurationChanged(_market, _minProfitDuration);
+    }
+
     function _validateBaseConfig(IConfigurable.MarketBaseConfig calldata _newCfg) private pure {
         if (_newCfg.maxLeveragePerLiquidityPosition == 0)
             revert IConfigurable.InvalidMaxLeveragePerLiquidityPosition(_newCfg.maxLeveragePerLiquidityPosition);

@@ -37,6 +37,8 @@ interface IMarketPosition {
         /// For long positions it is `GlobalPosition.longFundingRateGrowthX96`,
         /// and for short positions it is `GlobalPosition.shortFundingRateGrowthX96`
         int192 entryFundingRateGrowthX96;
+        /// @notice The entry time of the position
+        uint64 entryTime;
         uint256[50] __gap;
     }
     /// @notice Emitted when the funding fee is settled

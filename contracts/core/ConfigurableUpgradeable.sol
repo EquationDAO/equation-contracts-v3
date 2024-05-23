@@ -12,6 +12,7 @@ abstract contract ConfigurableUpgradeable is IConfigurable, GovernableUpgradeabl
     struct ConfigurableStorage {
         IERC20 usd;
         mapping(IMarketDescriptor market => MarketConfig) marketConfigs;
+        mapping(IMarketDescriptor market => uint16 minProfitDuration) marketMinProfitDurations;
     }
 
     // keccak256(abi.encode(uint256(keccak256("EquationDAO.storage.ConfigurableUpgradeable")) - 1)) & ~bytes32(uint256(0xff));
@@ -64,6 +65,13 @@ abstract contract ConfigurableUpgradeable is IConfigurable, GovernableUpgradeabl
     }
 
     /// @inheritdoc IConfigurable
+    function marketMinProfitDuration(
+        IMarketDescriptor _market
+    ) external view override returns (uint16 minProfitDuration) {
+        return _configurableStorage().marketMinProfitDurations[_market];
+    }
+
+    /// @inheritdoc IConfigurable
     function enableMarket(IMarketDescriptor _market, MarketConfig calldata _cfg) external override nonReentrant {
         _onlyGov();
         _configurableStorage().marketConfigs.enableMarket(_market, _cfg);
@@ -108,6 +116,21 @@ abstract contract ConfigurableUpgradeable is IConfigurable, GovernableUpgradeabl
         _configurableStorage().marketConfigs.updateMarketPriceConfig(_market, _newCfg);
 
         afterMarketPriceConfigChanged(_market);
+    }
+
+    /// @inheritdoc IConfigurable
+    function updateMarketMinProfitDuration(
+        IMarketDescriptor _market,
+        uint16 _minProfitDuration
+    ) external override nonReentrant {
+        _onlyGov();
+        ConfigurableStorage storage $ = _configurableStorage();
+        ConfigurableUtil.updateMarketMinProfitDuration(
+            $.marketConfigs,
+            $.marketMinProfitDurations,
+            _market,
+            _minProfitDuration
+        );
     }
 
     function afterMarketEnabled(IMarketDescriptor _market) internal virtual {
