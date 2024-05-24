@@ -27,7 +27,7 @@ const defaultFeeRateCfg = {
 const defaultPriceCfg = {
     maxPriceImpactLiquidity: (1n << 128n) - 1n,
     liquidationVertexIndex: 6,
-    dynamicDepthMode: 0,
+    dynamicDepthMode: 1,
     dynamicDepthLevel: parsePercent("70%"),
     vertices: [
         {balanceRate: 0, premiumRate: 0},
@@ -995,7 +995,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 30000000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 10000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1041,7 +1041,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 35000000000000n,
                         liquidationVertexIndex: 4,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 0n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1087,7 +1087,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 3500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1133,7 +1133,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1179,7 +1179,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1225,7 +1225,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1271,7 +1271,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1317,7 +1317,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1363,7 +1363,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1409,7 +1409,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1455,7 +1455,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1501,7 +1501,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1547,7 +1547,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1593,7 +1593,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1639,7 +1639,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1685,7 +1685,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1731,7 +1731,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1777,7 +1777,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1823,7 +1823,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1869,7 +1869,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1915,7 +1915,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -1961,7 +1961,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2007,7 +2007,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2053,7 +2053,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2099,7 +2099,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2145,7 +2145,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2191,7 +2191,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2237,7 +2237,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2283,7 +2283,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2329,7 +2329,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2375,7 +2375,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2421,7 +2421,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2467,7 +2467,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 800000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2513,7 +2513,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2559,7 +2559,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2605,7 +2605,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2651,7 +2651,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2697,7 +2697,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2743,7 +2743,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 900000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2789,7 +2789,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 800000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2835,7 +2835,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1000000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2881,7 +2881,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2927,7 +2927,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 800000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -2973,7 +2973,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -3019,7 +3019,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 1500000000000n,
                         liquidationVertexIndex: 6,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 20000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -3065,7 +3065,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -3111,7 +3111,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 800000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -3157,7 +3157,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -3203,7 +3203,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -3249,7 +3249,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -3295,7 +3295,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -3341,7 +3341,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 800000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -3387,7 +3387,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -3433,7 +3433,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 800000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
@@ -3479,7 +3479,7 @@ export const networks = {
                     priceCfg: {
                         maxPriceImpactLiquidity: 700000000000n,
                         liquidationVertexIndex: 7,
-                        dynamicDepthMode: 0,
+                        dynamicDepthMode: 1,
                         dynamicDepthLevel: 40000000n,
                         vertices: [
                             {balanceRate: 0, premiumRate: 0},
