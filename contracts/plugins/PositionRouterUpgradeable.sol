@@ -570,16 +570,11 @@ contract PositionRouterUpgradeable is IPositionRouter, GovernableUpgradeable, Re
         bool shouldExecute = _shouldExecute(request.blockNumber, request.blockTime, request.account);
         if (!shouldExecute) return false;
 
-        uint160 tradePriceX96 = router.pluginDecreasePosition{gas: executionGasLimit}(
-            request.market,
-            request.account,
-            request.side,
-            request.marginDelta,
-            request.sizeDelta,
-            request.receiver
-        );
+        (uint160 tradePriceX96, bool useEntryPriceAsTradePrice) = router.pluginDecreasePositionV2{
+            gas: executionGasLimit
+        }(request.market, request.account, request.side, request.marginDelta, request.sizeDelta, request.receiver);
 
-        if (request.acceptableTradePriceX96 != 0)
+        if (request.acceptableTradePriceX96 != 0 && !useEntryPriceAsTradePrice)
             _validateTradePriceX96(request.side.flip(), tradePriceX96, request.acceptableTradePriceX96);
 
         _transferOutETH(request.executionFee, _executionFeeReceiver);

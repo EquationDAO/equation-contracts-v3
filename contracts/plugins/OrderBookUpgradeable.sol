@@ -242,16 +242,11 @@ contract OrderBookUpgradeable is IOrderBook, GovernableUpgradeable, ReentrancyGu
             marginDeltaAfter = 0;
         }
 
-        uint160 tradePriceX96 = router.pluginDecreasePosition{gas: executionGasLimit}(
-            order.market,
-            order.account,
-            order.side,
-            marginDeltaAfter,
-            sizeDeltaAfter,
-            order.receiver
-        );
+        (uint160 tradePriceX96, bool useEntryPriceAsTradePrice) = router.pluginDecreasePositionV2{
+            gas: executionGasLimit
+        }(order.market, order.account, order.side, marginDeltaAfter, sizeDeltaAfter, order.receiver);
 
-        if (order.sizeDelta != 0)
+        if (order.sizeDelta != 0 && !useEntryPriceAsTradePrice)
             _validateTradePriceX96(order.side.flip(), tradePriceX96, order.acceptableTradePriceX96);
 
         _transferOutETH(order.executionFee, _feeReceiver);

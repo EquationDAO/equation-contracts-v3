@@ -210,16 +210,29 @@ contract MarketManagerUpgradeable is MarketManagerStatesUpgradeable {
         uint128 _marginDelta,
         uint128 _sizeDelta,
         address _receiver
-    ) external override nonReentrantForMarket(_market) returns (uint160 tradePriceX96) {
+    ) external override returns (uint160 tradePriceX96) {
+        (tradePriceX96, ) = decreasePositionV2(_market, _account, _side, _marginDelta, _sizeDelta, _receiver);
+    }
+
+    /// @inheritdoc IMarketPosition
+    function decreasePositionV2(
+        IMarketDescriptor _market,
+        address _account,
+        Side _side,
+        uint128 _marginDelta,
+        uint128 _sizeDelta,
+        address _receiver
+    ) public override nonReentrantForMarket(_market) returns (uint160 tradePriceX96, bool useEntryPriceAsTradePrice) {
         _onlyRouter();
 
         MarketManagerStatesStorage storage $ = _statesStorage();
         State storage state = $.marketStates[_market];
-        IConfigurable.MarketConfig storage marketCfg = _configurableStorage().marketConfigs[_market];
+        ConfigurableUpgradeable.ConfigurableStorage storage configStorage = _configurableStorage();
+        IConfigurable.MarketConfig storage marketCfg = configStorage.marketConfigs[_market];
         IPriceFeed priceFeed = $.priceFeed;
         state.settleFundingFee(marketCfg, priceFeed, _market);
 
-        (tradePriceX96, _marginDelta) = state.decreasePosition(
+        (tradePriceX96, useEntryPriceAsTradePrice, _marginDelta) = state.decreasePosition(
             marketCfg,
             PositionUtil.DecreasePositionParameter({
                 market: _market,
@@ -228,7 +241,8 @@ contract MarketManagerUpgradeable is MarketManagerStatesUpgradeable {
                 marginDelta: _marginDelta,
                 sizeDelta: _sizeDelta,
                 priceFeed: priceFeed,
-                receiver: _receiver
+                receiver: _receiver,
+                minProfitDuration: configStorage.marketMinProfitDurations[_market]
             })
         );
         if (_marginDelta > 0) _transferOutAndUpdateBalance(state, _receiver, _marginDelta);
