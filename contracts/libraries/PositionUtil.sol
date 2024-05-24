@@ -200,7 +200,10 @@ library PositionUtil {
         );
 
         // If the position is newly created, set the entry time
-        if (positionCache.size == 0) position.entryTime = block.timestamp.toUint64();
+        if (positionCache.size == 0) {
+            position.entryTime = block.timestamp.toUint64();
+            emit IMarketPosition.PositionVersionChanged(_parameter.market, _parameter.account, _parameter.side, 2);
+        }
     }
 
     function decreasePosition(

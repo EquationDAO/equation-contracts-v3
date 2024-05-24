@@ -85,6 +85,13 @@ interface IMarketPosition {
         int256 fundingFee
     );
 
+    /// @notice Emitted when the position is created for the first time
+    /// @param market The descriptor used to describe the metadata of the market, such as symbol, name, decimals
+    /// @param account The owner of the position
+    /// @param side The side of the position (Long or Short)
+    /// @param version The version of the position
+    event PositionVersionChanged(IMarketDescriptor indexed market, address indexed account, Side side, uint16 version);
+
     /// @notice Emitted when the position margin/liquidity (value) is decreased
     /// @param market The descriptor used to describe the metadata of the market, such as symbol, name, decimals
     /// @param account The owner of the position
